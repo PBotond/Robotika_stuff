@@ -10,6 +10,7 @@ struct snake
 {
   int x;
   int y;
+  bool gyumolcs;
 };
 typedef struct snake snake; // Snake struktura a kigyo elemeinek (koordinatainak) tarolasara
 
@@ -38,6 +39,7 @@ bool Ellenorzes(snake keresett) // Eldonti, hogy egy adott koordinata-par eleme-
 snake RandomKoordinata() // Visszaad egy koordinata-part, ami biztosan nem eleme a kigyonak
 {
   snake randomKoord;
+  randomKoord.gyumolcs = true;
   while (1)
   {
     randomKoord.x = random(0, 8);
@@ -70,6 +72,7 @@ void setup()
   {
     kigyo[i].x = 4;                   // Vizszintesen kozepen
     kigyo[i].y = kigyoHossza - 1 - i; // Fuggolegesen kozeprol indulva
+    kigyo[i].gyumolcs = false;
     lc.setLed(0, kigyo[i].x, kigyo[i].y, true); // A kigyo egyes pontjaihoz tartozo LED-ek bekapcsolasa
     delay(kigyoSebesseg);                       // Kesleltetes
   }
