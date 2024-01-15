@@ -212,7 +212,7 @@ void loop()
 
   if (kigyo[kigyoHossza - 1].gyumolcs == true)
   {
-    kigyo[kigyoHossza - 1].gyumolcs == false;
+    kigyo[kigyoHossza - 1].gyumolcs = false;
     kigyoHossza++;
   }
   else
@@ -269,7 +269,6 @@ void loop()
     kovetkezoFej.x = 7;
   }
 
-
   /**** Gyilkolo ****/
   /*
 A  feladatai:
@@ -285,15 +284,16 @@ A  feladatai:
     kigyo[0] = kovetkezoFej;
   }
 
-
   if (kigyo[0].x == gyumolcs.x && kigyo[0].y == gyumolcs.y)
   {
     kigyo[0].gyumolcs = true;
     gyumolcs = RandomKoordinata();
     lc.setLed(0, gyumolcs.x, gyumolcs.y, true);
   }
+  else{
+    kigyo[0].gyumolcs = false;
+  }
 
-  
   lc.setLed(0, kigyo[0].x, kigyo[0].y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 
   delay(kigyoSebesseg); // Kesleltetes
