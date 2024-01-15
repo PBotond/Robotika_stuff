@@ -18,10 +18,10 @@ typedef struct snake snake; // Snake struktura a kigyo elemeinek (koordinatainak
 const int maxKigyoHossz = 64, kigyoSebesseg = 200;
 
 /**** GLOBALIS VALTOZOK ****/
-char haladasiIrany = 'w'; // A kigyo aktualis haladasi iranya
-snake kigyo[maxKigyoHossz];      // A kigyo teste
-snake gyumolcs;                  // Az aktualisan megszerezheto gyumolcs
-int kigyoHossza = 3;             // A kigyo aktualis hosszusaga
+char haladasiIrany = 'w';   // A kigyo aktualis haladasi iranya
+snake kigyo[maxKigyoHossz]; // A kigyo teste
+snake gyumolcs;             // Az aktualisan megszerezheto gyumolcs
+int kigyoHossza = 3;        // A kigyo aktualis hosszusaga
 
 /**** SAJAT FUGGVENYEK ****/
 bool Ellenorzes(snake keresett) // Eldonti, hogy egy adott koordinata-par eleme-e a kigyonak
@@ -49,6 +49,47 @@ snake RandomKoordinata() // Visszaad egy koordinata-part, ami biztosan nem eleme
     {
       return (randomKoord);
     }
+  }
+}
+
+/**** THE_END FUGGVENY ****/
+/*
+A fuggveny feladatai:
+(1. meno vege.)
+2. vegtelen ciklus.
+*/
+void THE_END()
+{
+  Serial.println("Vesztettél!!!");
+
+  while (1)
+  {
+    for (int i = 0; i <= 10; i++)
+    { // időzítés
+
+      for (int i = 0; i <= 7; i++)
+      {
+
+        for (int j = 0; j <= 7; j++)
+        {
+          lc.setLed(0, i, j, true);
+        }
+
+        for (int i = 0; i <= 7; i++)
+        {
+
+          for (int j = 0; j <= 7; j++)
+          {
+            lc.setLed(0, i, j, false);
+          }
+          delay(20);
+        }
+      }
+    }
+    Serial.println("Hogy lehetsz ilyen béna???");
+    Serial.println("Béna!!");
+    Serial.println("Én megprogramoztam, te meg arra sem vagy képes hogy játsz vele???");
+    Serial.println("Szégyeld magad!!!");
   }
 }
 
@@ -81,7 +122,8 @@ void setup()
 
   randomSeed(analogRead(0)); // Seed a random szamok generalasahoz (EM-zaj egy analog bemenetrol)
 
-  // TODO0
+  gyumolcs = RandomKoordinata();
+  lc.setLed(0, gyumolcs.x, gyumolcs.y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 }
 
 /**** LOOP FUGGVENY ****/
@@ -91,7 +133,7 @@ A fuggveny feladatai:
   2. Kigyo farkanak eltavolitasa, vagy megnovesztese (TODO1)
   3. Kigyo testenek leptetese elore (TODO1)
   4. Kigyo fejenek elhelyezese a kovetkezo helyere (esetleges atlepes a kepernyo hataran)
-  5. Utkozes-vizsgalat (TODO2)
+  5. Utkozes-vizsgalat (Gyilkolo)
   6. Gyumolcs-megeves-vizsgalat, uj gyumolcs elhelyezese (TODO3)
 */
 void loop()
@@ -177,22 +219,24 @@ void loop()
     kigyo[i] = kigyo[i - 1];
   }
 
+  snake kovetkezoFej = kigyo[0];
   /* Kigyo fejenek elkanyaritasa a megfelelo iranyba */
   switch (haladasiIrany)
   {
   case 'w':
-    kigyo[0].y++;
+    kovetkezoFej.y++;
     break;
+
   case 'a':
-    kigyo[0].x--;
+    kovetkezoFej.x--;
     break;
 
   case 's':
-    kigyo[0].y--;
+    kovetkezoFej.y--;
     break;
 
   case 'd':
-    kigyo[0].x++;
+    kovetkezoFej.x++;
     break;
 
   default:
@@ -200,33 +244,46 @@ void loop()
   }
 
   /* A kepernyo hataran valo atlepes */
-  if (kigyo[0].y > 7)
+  if (kovetkezoFej.y > 7)
   {
-    kigyo[0].y = 0;
+    kovetkezoFej.y = 0;
   }
-  if (kigyo[0].x > 7)
+  if (kovetkezoFej.x > 7)
   {
-    kigyo[0].x = 0;
+    kovetkezoFej.x = 0;
   }
-  if (kigyo[0].y < 0)
+  if (kovetkezoFej.y < 0)
   {
-    kigyo[0].y = 7;
+    kovetkezoFej.y = 7;
   }
-  if (kigyo[0].x < 0)
+  if (kovetkezoFej.x < 0)
   {
-    kigyo[0].x = 7;
+    kovetkezoFej.x = 7;
   }
 
-  //TODO2
+  /**** Gyilkolo ****/
+  /*
+A  feladatai:
+1. Utkozes erzekelese
+2. jatek vege.
+*/
+  if (Ellenorzes(kovetkezoFej))
+  {
+    THE_END();
+  }
+  else
+  {
+    kigyo[0] = kovetkezoFej;
+  }
 
-  //TODO3
+
   if (kigyo[0].x == gyumolcs.x && kigyo[0].y == gyumolcs.y)
   {
     kigyo[0].gyumolcs = true;
     gyumolcs = RandomKoordinata();
     lc.setLed(0, gyumolcs.x, gyumolcs.y, true);
   }
-  
+
 
   lc.setLed(0, kigyo[0].x, kigyo[0].y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 
