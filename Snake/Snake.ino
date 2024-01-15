@@ -81,7 +81,8 @@ void setup()
 
   randomSeed(analogRead(0)); // Seed a random szamok generalasahoz (EM-zaj egy analog bemenetrol)
 
-  // TODO0
+  gyumolcs = RandomKoordinata();
+  lc.setLed(0, gyumolcs.x, gyumolcs.y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 }
 
 /**** LOOP FUGGVENY ****/
