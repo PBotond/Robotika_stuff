@@ -210,8 +210,16 @@ void loop()
     }
   }
 
-  // TODO1
-  lc.setLed(0, kigyo[kigyoHossza - 1].x, kigyo[kigyoHossza - 1].y, false); // A kigyo farkanak lekapcsolasa
+  if (kigyo[kigyoHossza - 1].gyumolcs == true)
+  {
+    kigyo[kigyoHossza - 1].gyumolcs == false;
+    kigyoHossza++;
+  }
+  else
+  {
+    // TODO1
+    lc.setLed(0, kigyo[kigyoHossza - 1].x, kigyo[kigyoHossza - 1].y, false); // A kigyo farkanak lekapcsolasa
+  }
 
   for (size_t i = kigyoHossza - 1; i > 0; i--) // A kigyo elemeinek leptetese
   {
@@ -261,6 +269,7 @@ void loop()
     kovetkezoFej.x = 7;
   }
 
+
   /**** Gyilkolo ****/
   /*
 A  feladatai:
@@ -284,7 +293,7 @@ A  feladatai:
     lc.setLed(0, gyumolcs.x, gyumolcs.y, true);
   }
 
-
+  
   lc.setLed(0, kigyo[0].x, kigyo[0].y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 
   delay(kigyoSebesseg); // Kesleltetes
