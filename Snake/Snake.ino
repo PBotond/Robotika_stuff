@@ -220,6 +220,13 @@ void loop()
   //TODO2
 
   //TODO3
+  if (kigyo[0].x == gyumolcs.x && kigyo[0].y == gyumolcs.y)
+  {
+    kigyo[0].gyumolcs = true;
+    gyumolcs = RandomKoordinata();
+    lc.setLed(0, gyumolcs.x, gyumolcs.y, true);
+  }
+  
 
   lc.setLed(0, kigyo[0].x, kigyo[0].y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 
