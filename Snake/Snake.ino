@@ -18,10 +18,10 @@ typedef struct snake snake; // Snake struktura a kigyo elemeinek (koordinatainak
 const int maxKigyoHossz = 64, kigyoSebesseg = 200;
 
 /**** GLOBALIS VALTOZOK ****/
-char haladasiIrany = 'w'; // A kigyo aktualis haladasi iranya
-snake kigyo[maxKigyoHossz];      // A kigyo teste
-snake gyumolcs;                  // Az aktualisan megszerezheto gyumolcs
-int kigyoHossza = 3;             // A kigyo aktualis hosszusaga
+char haladasiIrany = 'w';   // A kigyo aktualis haladasi iranya
+snake kigyo[maxKigyoHossz]; // A kigyo teste
+snake gyumolcs;             // Az aktualisan megszerezheto gyumolcs
+int kigyoHossza = 3;        // A kigyo aktualis hosszusaga
 
 /**** SAJAT FUGGVENYEK ****/
 bool Ellenorzes(snake keresett) // Eldonti, hogy egy adott koordinata-par eleme-e a kigyonak
@@ -168,8 +168,16 @@ void loop()
     }
   }
 
-  // TODO1
-  lc.setLed(0, kigyo[kigyoHossza - 1].x, kigyo[kigyoHossza - 1].y, false); // A kigyo farkanak lekapcsolasa
+  if (kigyo[kigyoHossza - 1].gyumolcs == true)
+  {
+    kigyo[kigyoHossza - 1].gyumolcs == false;
+    kigyoHossza++;
+  }
+  else
+  {
+    // TODO1
+    lc.setLed(0, kigyo[kigyoHossza - 1].x, kigyo[kigyoHossza - 1].y, false); // A kigyo farkanak lekapcsolasa
+  }
 
   for (size_t i = kigyoHossza - 1; i > 0; i--) // A kigyo elemeinek leptetese
   {
@@ -217,9 +225,9 @@ void loop()
     kigyo[0].x = 7;
   }
 
-  //TODO2
+  // TODO2
 
-  //TODO3
+  // TODO3
 
   lc.setLed(0, kigyo[0].x, kigyo[0].y, true); // Kigyo fejenek megfelelo LED felkapcsolasa
 
