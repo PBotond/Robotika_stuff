@@ -62,35 +62,54 @@ void THE_END()
 {
   Serial.println("Vesztettél!!!");
 
+  for (int i = 0; i < kigyoHossza + 1; i++)
+  {
+    lc.setLed(0, kigyo[i].x, kigyo[i].y, false);
+    delay(100);
+  }
+
+  for (int i = 0; i < kigyoHossza + 1; i++)
+  {
+    lc.setLed(0, kigyo[i].x, kigyo[i].y, true);
+    delay(100);
+  }
+
+  for (int i = 0; i < kigyoHossza + 1; i++)
+  {
+    lc.setLed(0, kigyo[i].x, kigyo[i].y, false);
+    delay(100);
+  }
+
+  for (int i = 0; i < kigyoHossza + 1; i++)
+  {
+    lc.setLed(0, kigyo[i].x, kigyo[i].y, true);
+    delay(100);
+  }
+
   while (1)
   {
-    for (int i = 0; i <= 10; i++)
-    { // időzítés
+    for (int i = 0; i <= 7; i++)
+    {
 
+      for (int j = 0; j <= 7; j++)
+      {
+        lc.setLed(0, i, j, true);
+        delay(100);
+      }
       for (int i = 0; i <= 7; i++)
       {
 
         for (int j = 0; j <= 7; j++)
         {
-          lc.setLed(0, i, j, true);
-        }
-
-        for (int i = 0; i <= 7; i++)
-        {
-
-          for (int j = 0; j <= 7; j++)
-          {
-            lc.setLed(0, i, j, false);
-          }
-          delay(20);
+          lc.setLed(0, i, j, false);
         }
       }
     }
-    Serial.println("Hogy lehetsz ilyen béna???");
-    Serial.println("Béna!!");
-    Serial.println("Én megprogramoztam, te meg arra sem vagy képes hogy játsz vele???");
-    Serial.println("Szégyeld magad!!!");
   }
+  Serial.println("Hogy lehetsz ilyen béna???");
+  Serial.println("Béna!!");
+  Serial.println("Én megprogramoztam, te meg arra sem vagy képes hogy játsz vele???");
+  Serial.println("Szégyeld magad!!!");
 }
 
 /**** SETUP FUGGVENY ****/
@@ -290,7 +309,8 @@ A  feladatai:
     gyumolcs = RandomKoordinata();
     lc.setLed(0, gyumolcs.x, gyumolcs.y, true);
   }
-  else{
+  else
+  {
     kigyo[0].gyumolcs = false;
   }
 
