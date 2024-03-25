@@ -39,8 +39,12 @@ void setup()
 
 bool irany;
 int sebesseg;
-void MotVez(bool irany,motornev motor,int sebesseg){
-    
+void MotVez(bool irany,motornev motor,float sebesseg){
+    float sebesseg=sebesseg*2.55
+
+
+
+
 }
 
 
