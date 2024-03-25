@@ -13,6 +13,9 @@
 #define IN_D1_PIN 11
 #define IN_D2_PIN 12
 
+typedef enum motor{A,B,C,D} motornev;
+motornev motor;
+
 /* Setup függvény
             feladatai:
         */
