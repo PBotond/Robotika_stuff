@@ -165,12 +165,12 @@ void stop()
 void loop()
 {
 
-    elore();
+    elore_();
     delay(2000);
     jobbra();
     delay(1000);
-    elore();
+    elore_();
     delay(5000);
-    hatra();
+    hatra_();
     delay(2000);
 }
