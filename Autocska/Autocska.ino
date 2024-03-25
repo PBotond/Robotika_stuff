@@ -37,6 +37,16 @@ void setup()
     pinMode(IN_D2_PIN, OUTPUT);
 }
 
+bool irany;
+int sebesseg;
+void MotVez(bool irany,motornev motor,int sebesseg){
+    
+}
+
+
+
+
+
 /* Loop függvény
             feladatai:
         */
