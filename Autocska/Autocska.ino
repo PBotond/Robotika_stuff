@@ -12,6 +12,8 @@
 #define IN_C2_PIN 7
 #define IN_D1_PIN 11
 #define IN_D2_PIN 12
+#define elore 1
+#define hatra 0
 
 typedef enum motor
 {
@@ -66,6 +68,65 @@ void motVez(bool irany, motornev motor, int sebesseg)
 
     case D:
         analogWrite(EN_D_PIN, sebesseg);
+        break;
+
+    default:
+        break;
+    }
+
+    switch (motor)
+    {
+    case A:
+
+        if (irany == 1)
+        {
+
+            digitalWrite(IN_A1_PIN, HIGH);
+        }
+        else
+        {
+
+            digitalWrite(IN_A2_PIN, HIGH);
+        }
+        break;
+
+    case B:
+
+        if (irany == 1)
+        {
+
+            digitalWrite(IN_B1_PIN, HIGH);
+        }
+        else
+        {
+            digitalWrite(IN_B2_PIN, HIGH);
+        }
+        break;
+
+    case C:
+
+        if (irany == 1)
+        {
+
+            digitalWrite(IN_C1_PIN, HIGH);
+        }
+        else
+        {
+            digitalWrite(IN_C2_PIN, HIGH);
+        }
+        break;
+
+    case D:
+
+        if (irany == 1)
+        {
+
+            digitalWrite(IN_D1_PIN, HIGH);
+        }
+        else
+        {
+            digitalWrite(IN_D2_PIN, HIGH);
+        }
         break;
 
     default:
