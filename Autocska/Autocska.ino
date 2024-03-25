@@ -13,7 +13,13 @@
 #define IN_D1_PIN 11
 #define IN_D2_PIN 12
 
-typedef enum motor{A,B,C,D} motornev;
+typedef enum motor
+{
+    A,
+    B,
+    C,
+    D
+} motornev;
 motornev motor;
 
 /* Setup függvény
@@ -39,17 +45,33 @@ void setup()
 
 bool irany;
 int sebesseg;
-void MotVez(bool irany,motornev motor,float sebesseg){
-    float sebesseg=sebesseg*2.55
+void motVez(bool irany, motornev motor, int sebesseg)
+{
 
+    sebesseg = (int)(sebesseg * 2.55);
 
+    switch (motor)
+    {
+    case A:
+        analogWrite(EN_A_PIN, sebesseg);
+        break;
 
+    case B:
+        analogWrite(EN_B_PIN, sebesseg);
+        break;
 
+    case C:
+        analogWrite(EN_C_PIN, sebesseg);
+        break;
+
+    case D:
+        analogWrite(EN_D_PIN, sebesseg);
+        break;
+
+    default:
+        break;
+    }
 }
-
-
-
-
 
 /* Loop függvény
             feladatai:
@@ -57,5 +79,4 @@ void MotVez(bool irany,motornev motor,float sebesseg){
 
 void loop()
 {
-
 }
