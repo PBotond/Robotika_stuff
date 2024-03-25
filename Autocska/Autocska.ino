@@ -150,7 +150,7 @@ void hatra_()
     motVez(hatra, D, 100);
 }
 
-void hatra_()
+void jobbra_()
 {
     motVez(hatra, A, 100);
     motVez(hatra, B, 100);
@@ -158,7 +158,7 @@ void hatra_()
     motVez(hatra, D, 100);
 }
 
-void hatra_()
+void balra_()
 {
     motVez(hatra, A, 100);
     motVez(hatra, B, 100);
