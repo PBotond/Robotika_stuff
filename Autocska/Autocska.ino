@@ -134,6 +134,37 @@ void motVez(bool irany, motornev motor, int sebesseg)
     }
 }
 
+void elore_()
+{
+    motVez(elore, A, 100);
+    motVez(elore, B, 100);
+    motVez(elore, C, 100);
+    motVez(elore, D, 100);
+}
+
+void hatra_()
+{
+    motVez(hatra, A, 100);
+    motVez(hatra, B, 100);
+    motVez(hatra, C, 100);
+    motVez(hatra, D, 100);
+}
+
+void hatra_()
+{
+    motVez(hatra, A, 100);
+    motVez(hatra, B, 100);
+    motVez(hatra, C, 100);
+    motVez(hatra, D, 100);
+}
+
+void hatra_()
+{
+    motVez(hatra, A, 100);
+    motVez(hatra, B, 100);
+    motVez(hatra, C, 100);
+    motVez(hatra, D, 100);
+}
 /* Loop függvény
             feladatai:
         */
