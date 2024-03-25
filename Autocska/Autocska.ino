@@ -56,76 +56,61 @@ void motVez(bool irany, motornev motor, int sebesseg)
     {
     case A:
         analogWrite(EN_A_PIN, sebesseg);
-        break;
-
-    case B:
-        analogWrite(EN_B_PIN, sebesseg);
-        break;
-
-    case C:
-        analogWrite(EN_C_PIN, sebesseg);
-        break;
-
-    case D:
-        analogWrite(EN_D_PIN, sebesseg);
-        break;
-
-    default:
-        break;
-    }
-
-    switch (motor)
-    {
-    case A:
-
         if (irany == 1)
         {
 
             digitalWrite(IN_A1_PIN, HIGH);
+            digitalWrite(IN_A2_PIN, LOW);
         }
         else
         {
 
             digitalWrite(IN_A2_PIN, HIGH);
+            digitalWrite(IN_A1_PIN, LOW);
         }
         break;
 
     case B:
-
+        analogWrite(EN_B_PIN, sebesseg);
         if (irany == 1)
         {
 
             digitalWrite(IN_B1_PIN, HIGH);
+            digitalWrite(IN_B2_PIN, LOW);
         }
         else
         {
             digitalWrite(IN_B2_PIN, HIGH);
+            digitalWrite(IN_B1_PIN, LOW);
         }
         break;
 
     case C:
-
+        analogWrite(EN_C_PIN, sebesseg);
         if (irany == 1)
         {
 
             digitalWrite(IN_C1_PIN, HIGH);
+            digitalWrite(IN_C2_PIN, LOW);
         }
         else
         {
             digitalWrite(IN_C2_PIN, HIGH);
+            digitalWrite(IN_C1_PIN, LOW);
         }
         break;
 
     case D:
-
+        analogWrite(EN_D_PIN, sebesseg);
         if (irany == 1)
         {
-
             digitalWrite(IN_D1_PIN, HIGH);
+            digitalWrite(IN_D2_PIN, LOW);
         }
         else
         {
             digitalWrite(IN_D2_PIN, HIGH);
+            digitalWrite(IN_D1_PIN, LOW);
         }
         break;
 
@@ -134,10 +119,43 @@ void motVez(bool irany, motornev motor, int sebesseg)
     }
 }
 
+void jobbra()
+{
+    motVez(elore, A, 50);
+    motVez(elore, C, 50);
+    motVez(hatra, B, 50);
+    motVez(hatra, D, 50);
+}
+
+void balra()
+{
+    motVez(hatra, A, 50);
+    motVez(hatra, C, 50);
+    motVez(elore, B, 50);
+    motVez(elore, D, 50);
+}
+
+void stop()
+{
+    motVez(elore, A, 0);
+    motVez(elore, C, 0);
+    motVez(elore, B, 0);
+    motVez(elore, D, 0);
+}
+
 /* Loop függvény
             feladatai:
         */
 
 void loop()
 {
+
+    elore();
+    delay(2000);
+    jobbra();
+    delay(1000);
+    elore();
+    delay(5000);
+    hatra();
+    delay(2000);
 }
