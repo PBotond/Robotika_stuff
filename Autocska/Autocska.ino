@@ -150,21 +150,6 @@ void hatra_()
     motVez(hatra, D, 100);
 }
 
-void jobbra_()
-{
-    motVez(hatra, A, 100);
-    motVez(hatra, B, 100);
-    motVez(hatra, C, 100);
-    motVez(hatra, D, 100);
-}
-
-void balra_()
-{
-    motVez(hatra, A, 100);
-    motVez(hatra, B, 100);
-    motVez(hatra, C, 100);
-    motVez(hatra, D, 100);
-}
 /* Loop függvény
             feladatai:
         */
